@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, View, Button, Image, StyleSheet } from 'react-native';
 
+import Topo from './src/components/topo.android';
+import Icone from './src/components/icone.android';
+
 class app_3 extends Component {
 
   constructor(props) {
@@ -101,45 +104,6 @@ class app_3 extends Component {
   }
 }
 
-class Topo extends Component {
-  render() {
-    return (
-      <View>
-        <Image source={require('./imgs/jokenpo.png')} resizeMode="stretch" style={{ width: '100%' }} />
-      </View>
-    );
-  }
-}
-
-class Icone extends Component {
-  render() {
-    if (this.props.escolha === 'pedra') {
-      return (
-        <View style={styles.icone}>
-          <Text style={styles.txtJogador}>{this.props.jogador}</Text>
-          <Image source={require('./imgs/pedra.png')} />
-        </View>
-      );
-    } else if (this.props.escolha === 'papel') {
-      return (
-        <View style={styles.icone}>
-          <Text style={styles.txtJogador}>{this.props.jogador}</Text>
-          <Image source={require('./imgs/papel.png')} />
-        </View>
-      );
-    } else if (this.props.escolha === 'tesoura') {
-      return (
-        <View style={styles.icone}>
-          <Text style={styles.txtJogador}>{this.props.jogador}</Text>
-          <Image source={require('./imgs/tesoura.png')} />
-        </View>
-      );
-    } else {
-      return false;
-    }
-  }
-}
-
 const styles = StyleSheet.create({
   btnEscolha: {
     width: 90
@@ -158,13 +122,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'red',
     height: 60
-  },
-  icone: {
-    alignItems: 'center',
-    marginBottom: 20
-  },
-  txtJogador: {
-    fontSize: 18
   }
 });
 
