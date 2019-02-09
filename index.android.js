@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, Text, View, Button, Image, StyleSheet } from 'react-native';
+import { AppRegistry, Text, View, Button, StyleSheet } from 'react-native';
 
 import Topo from './src/components/topo.android';
 import Icone from './src/components/icone.android';
@@ -21,10 +21,11 @@ class app_3 extends Component {
 
     let escolhaComputador = '';
 
-    switch(numAleatorio) {
+    switch (numAleatorio) {
       case 0: escolhaComputador = 'pedra'; break;
       case 1: escolhaComputador = 'papel'; break;
       case 2: escolhaComputador = 'tesoura'; break;
+      default: escolhaComputador = '';
     }
 
     let resultado = '';
@@ -71,11 +72,7 @@ class app_3 extends Component {
       }
     }
 
-    this.setState({ 
-      escolhaUsuario: escolhaUsuario, 
-      escolhaComputador: escolhaComputador,
-      resultado: resultado
-    });
+    this.setState({ escolhaUsuario, escolhaComputador, resultado });
   }
 
   render() {
@@ -96,8 +93,8 @@ class app_3 extends Component {
         <View style={styles.palco}>
           <Text style={styles.txtResultado}>{this.state.resultado}</Text>
           
-          <Icone escolha={this.state.escolhaComputador} jogador='Computador'></Icone>
-          <Icone escolha={this.state.escolhaUsuario} jogador='Você'></Icone>
+          <Icone escolha={this.state.escolhaComputador} jogador='Computador' />
+          <Icone escolha={this.state.escolhaUsuario} jogador='Você' />
         </View>
       </View>
     );
