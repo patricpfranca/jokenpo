@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, Text, View, Button, Image } from 'react-native';
+import { AppRegistry, Text, View, Button, Image, StyleSheet } from 'react-native';
 
 class app_3 extends Component {
 
@@ -78,15 +78,22 @@ class app_3 extends Component {
   render() {
     return (
       <View>
-        <Topo></Topo>
-        <View></View>
+        <Topo />
+        <View style={styles.painelAcoes}>
+          <View style={styles.btnEscolha}>
+            <Button title="pedra" onPress={() => { this.jokenpo('pedra'); }} />
+          </View>
+          <View style={styles.btnEscolha}>
+            <Button title="papel" onPress={() => { this.jokenpo('papel'); }} />
+          </View>
+          <View style={styles.btnEscolha}>
+            <Button title="tesoura" onPress={() => { this.jokenpo('tesoura'); }} />
+          </View>
+        </View>
         <View></View>
         <Text>Escolha do computador: {this.state.escolhaComputador}</Text>
         <Text>Escolha do usuário: {this.state.escolhaUsuario}</Text>
         <Text>Resultado: {this.state.resultado}</Text>
-        <Button title="pedra" onPress={() => { this.jokenpo('pedra'); }} />
-        <Button title="papel" onPress={() => { this.jokenpo('papel'); }} />
-        <Button title="tesoura" onPress={() => { this.jokenpo('tesoura'); }} />
       </View>
     );
   }
@@ -101,5 +108,16 @@ class Topo extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  btnEscolha: {
+    width: 90
+  },
+  painelAcoes: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10
+  }
+});
 
 AppRegistry.registerComponent('app_3', () => app_3);
