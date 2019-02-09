@@ -1,32 +1,39 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
-
-class MeuComponente extends Component {
-  render() {
-    return (
-      <View>
-        <Text>{this.props.teste}</Text>
-      </View>
-    );
-  }
-}
+import { AppRegistry, Text, View, Button } from 'react-native';
 
 class app_3 extends Component {
+
   constructor(props) {
     super(props);
 
-    this.state = { texto: 'Texto teste 2' };
+    this.state = { escolhaUsuario: '', escolhaComputador: '' };
   }
 
-  alteraTexto() {
-    this.setState({ texto: 'Outra coisa' });
+  jokenpo(escolhaUsuario) {
+    const numAleatorio = Math.floor(Math.random() * 3);
+
+    let escolhaComputador = '';
+
+    switch(numAleatorio) {
+      case 0: escolhaComputador = 'pedra'; break;
+      case 1: escolhaComputador = 'papel'; break;
+      case 2: escolhaComputador = 'tesoura'; break;
+    }
+
+    this.setState({ escolhaUsuario: escolhaUsuario, 
+                    escolhaComputador: escolhaComputador 
+                  });
   }
 
   render() {
     return (
       <View>
-        <MeuComponente teste={this.state.texto}></MeuComponente>
-        <Button title='Botão' onPress={() => { this.alteraTexto(); }} />
+        <Text>Escolha do computador: {this.state.escolhaComputador}</Text>
+        <Text>Escolha do usuário: {this.state.escolhaUsuario}</Text>
+        <Text>Resultado</Text>
+        <Button title="pedra" onPress={() => { this.jokenpo('pedra'); }} />
+        <Button title="papel" onPress={() => { this.jokenpo('papel'); }} />
+        <Button title="tesoura" onPress={() => { this.jokenpo('tesoura'); }} />
       </View>
     );
   }
